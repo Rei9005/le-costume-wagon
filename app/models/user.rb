@@ -3,4 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :bookings
+  has_many :costumes
+
+  validates :email, presence: true, format: { with: /\A.*@.*\.com\z/ }
+  validates :encrypted_password, presence: true, length: { minimum: 10 }
+
+  validates :name, presence: true
+  validates :description, presence: true, length: { minimum: 5 }
+  validates :phone, presence: true, length: { minimum: 10 }
 end
