@@ -5,20 +5,11 @@ Rails.application.routes.draw do
 
 
 
-  # resources :costumes, only: [:index, :show, :new, :create] do
-  #   collection do
-  #     get 'search', to: 'costumes#search', as: :search
-  #   end
-  #   resources :reservations, only: [:new, :create]
-  # end
+  resources :costumes, only: [:index, :show, :new, :create] do
+    resources :bookings, only: [:new, :create]
+  end
 
-  # resources :reservations, only: [:index]
-
-
-
-  # get 'owner/reservations', to: 'reservations#index_owner', as: :owner_reservations
-  # get 'owner/reservations/:id/edit', to: 'reservations#edit', as: :edit_reservation
-  # patch 'owner/reservations/:id', to: 'reservations#update'
+  resources :bookings, only: [:index]
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
