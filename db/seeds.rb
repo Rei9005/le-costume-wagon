@@ -84,76 +84,182 @@ require "open-uri"
 # puts "#{User.count} users created"
 # puts "#{Costume.count} costumes created"
 
+# # User 1 with 3 costumes
+# user = User.new(
+#       email:  "",
+#       password: "",
+#       name: "",
+#       description: "",
+#       phone: ""
+#     )
+
+# file = URI.open("")
+# costume = Costume.new(
+#   price: ,
+#   character: "",
+#   size: "",
+#   description: ",
+# )
+
+puts 'Cleaning the DB...'
 Booking.destroy_all
 Costume.destroy_all
 User.destroy_all
 
+puts "Creating users and costumes..."
+
+# User 1 with 3 costumes
 user = User.new(
-      email:  "watanabe.r.e.i.z2929@gmail.com",
-      password: "watanaberei51111",
-      name: "rei watanabe",
-      description: "I'm rei . hello!!!!!",
-      phone: "08044418318"
-    )
+  email:  "shiro@junkmail.com      ",
+  password: "1111111111",
+  name: "Shiro",
+  description: "Baseball Umpire      ",
+  phone: "1111111111")
 
-
-file = URI.open("https://cdn.worldcosplay.net/140447/lelbfsyyjxjhslptpcwubjcvkjjitwownypkskdp-740.jpg")
+  file = URI.open("https://cdn.worldcosplay.net/140447/lelbfsyyjxjhslptpcwubjcvkjjitwownypkskdp-740.jpg")
   costume = Costume.new(
-    price: rand(100..7000),
-    character: "Luffy",
+    price: 3000,
+    character: "Luffy      ",
     size: "M",
-    description: "this is Luffy",
-  )
+    description: "Dress like Luffy and become the King of Pirates!")
   costume.user = user
   costume.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
   costume.save
 
+  file = URI.open("https://cos.guide/upload/full/2022/07/FPNOli4agAIWkVj.jpg")
+  costume = Costume.new(
+    price: 4000,
+    character: "Usopp",
+    size: "L",
+    description: "Dress like Usopp, the trickster of the Luffy crew!")
+  costume.user = user
+  costume.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
+  costume.save
 
+  file = URI.open("https://i.pinimg.com/originals/7c/5f/67/7c5f672a84a8e8382ebef752388016c6.jpg")
+  costume = Costume.new(
+    price: 2000,
+    character: "Pikachu",
+    size: "L",
+    description: "Used but good quality.")
+  costume.user = user
+  costume.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
+  costume.save
 
-  file = URI.open("https://cdn.worldcosplay.net/140447/lelbfsyyjxjhslptpcwubjcvkjjitwownypkskdp-740.jpg")
-  costume2 = Costume.new(
-    price: rand(100..7000),
-    character: "Luffy",
+# User 2 with 2 costumes
+user = User.new(
+  email:  "elsi@junkmail.com",
+  password: "2222222222",
+  name: "Elsi",
+  description: "Gate Agent",
+  phone: "2222222222")
+
+  file = URI.open("https://animeanime.jp/imgs/zoom/509912.jpg")
+  costume = Costume.new(
+    price: 4500,
+    character: "Nami",
+    size: "S",
+    description: "Dress in a lovely costume and become Nami!")
+  costume.user = user
+  costume.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
+  costume.save
+
+  file = URI.open("https://www.reddit.com/media?url=https%3A%2F%2Fi.redd.it%2F29rauzp1y49c1.jpeg")
+  costume = Costume.new(
+    price: 3000,
+    character: "Inuyasha",
+    size: "XL",
+    description: "Newly arrived")
+  costume.user = user
+  costume.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
+  costume.save
+
+# User 3 with 3 costumes
+user = User.new(
+  email:  "busta@junkmail.com",
+  password: "3333333333",
+  name: "Busta",
+  description: "Supervising Fire Marshal",
+  phone: "3333333333")
+
+  file = URI.open("https://i.pinimg.com/originals/59/c5/72/59c5725e4140167c51c6a82d719606a2.jpg")
+  costume = Costume.new(
+    price: 2500,
+    character: "Russell",
     size: "M",
-    description: "this is Luffy",
-  )
-  costume2.user = user
-  costume2.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
-  costume2.save
+    description: "Comes with badges and cap.")
+  costume.user = user
+  costume.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
+  costume.save
 
+  file = URI.open("https://www.fm-anime.com/media/catalog/product/cache/d88a63ef4f53a0b30222f4d68ed8ec62/k/a/kausavich_kirenenko_2_-_.jpg")
+  costume = Costume.new(
+    price: 2000,
+    character: "Kirenenko",
+    size: "L",
+    description: "A Russian rabbit convict with anger management issues")
+  costume.user = user
+  costume.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
+  costume.save
 
-
-  file = URI.open("https://cdn.worldcosplay.net/140447/lelbfsyyjxjhslptpcwubjcvkjjitwownypkskdp-740.jpg")
-  costume3 = Costume.new(
-    price: rand(100..7000),
-    character: "Luffy",
+  file = URI.open("https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.ezcosplay.com%2Fdragon-ball-son-goku-cosplay-costume.html&psig=AOvVaw1mmxFeMHeOppOlbaIwV6bv&ust=1715787462711000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMiN2NS8jYYDFQAAAAAdAAAAABAE")
+  costume = Costume.new(
+    price: 3500,
+    character: "Son Goku",
     size: "M",
-    description: "this is Luffy",
-  )
-  costume3.user = user
-  costume3.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
-  costume3.save
+    description: "Orange outfit with wig")
+  costume.user = user
+  costume.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
+  costume.save
 
+puts "Creating bookings..."
 
+booking = Booking.new(
+  user: User.find(2),
+  costume: Costume.find(1),
+  start_date: Date.today - 10,
+  end_date: Date.today + 8,
+  status: "Requested")
+  booking.save
 
-  file = URI.open("https://cdn.worldcosplay.net/140447/lelbfsyyjxjhslptpcwubjcvkjjitwownypkskdp-740.jpg")
-  costume4 = Costume.new(
-    price: rand(100..7000),
-    character: "Luffy",
-    size: "M",
-    description: "this is Luffy",
-  )
-  costume4.user = user
-  costume4.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
-  costume4.save
+  booking = Booking.new(
+  user: User.find(3),
+  costume: Costume.find(2),
+  start_date: Date.today - 9,
+  end_date: Date.today + 7,
+  status: "Requested")
+  booking.save
 
-  file = URI.open("https://cdn.worldcosplay.net/140447/lelbfsyyjxjhslptpcwubjcvkjjitwownypkskdp-740.jpg")
-  costume5 = Costume.new(
-    price: rand(100..7000),
-    character: "Luffy",
-    size: "M",
-    description: "this is Luffy",
-  )
-  costume5.user = user
-  costume5.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
-  costume5.save
+  booking = Booking.new(
+  user: User.find(1),
+  costume: Costume.find(4),
+  start_date: Date.today - 7,
+  end_date: Date.today + 5,
+  status: "Requested")
+  booking.save
+
+  booking = Booking.new(
+  user: User.find(3),
+  costume: Costume.find(5),
+  start_date: Date.today - 6,
+  end_date: Date.today + 4,
+  status: "Requested")
+  booking.save
+
+  booking = Booking.new(
+  user: User.find(1),
+  costume: Costume.find(6),
+  start_date: Date.today - 5,
+  end_date: Date.today + 3,
+  status: "Requested")
+  booking.save
+
+  booking = Booking.new(
+  user: User.find(2),
+  costume: Costume.find(7),
+  start_date: Date.today - 4,
+  end_date: Date.today + 2,
+  status: "Requested")
+  booking.save
+
+puts "Finished seeding with #{User.count} users, #{Costume.count} costumes, and #{Booking.count} bookings"
