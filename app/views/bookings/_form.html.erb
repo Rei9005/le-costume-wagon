@@ -1,12 +1,15 @@
 <div class="container">
-    <h1>Name of Costume</h1>
-    <p>Description: used but good.</p>
-    <select name="size" id="size">
-        <option value="small">Small</option>
-        <option value="medium">Medium</option>
-        <option value="large">Large</option>
-    </select>
-    <img src="costume_image.jpg" alt="Costume Image">
-    <p>Final Total Price: $XX.XX (per day)</p>
-    <button>Add to Cart</button>
+<%= simple_form_for([@costume, @booking]) do |f| %>
+    <div class="field">
+    <%= f.input :start_date %>
+</div>
+    
+ <div class="field">
+    <%= f.input :end_date %>
+</div>
+    
+<div class="actions">
+    <%= f.submit "Submit" %>
+    </div>
+    <% end %>
 </div>

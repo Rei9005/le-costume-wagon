@@ -108,6 +108,7 @@ User.destroy_all
 
 puts "Creating users and costumes..."
 
+
 # User 1 with 3 costumes
 user = User.new(
   email:  "shiro@junkmail.com      ",
