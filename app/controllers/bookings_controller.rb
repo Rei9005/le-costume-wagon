@@ -1,8 +1,9 @@
 class BookingsController < ApplicationController
-  def index
-    @bookings = booking.all
-  end
 
+
+  def show
+    @booking = Booking.find(params[:id])
+=======
   def new
     @booking = Booking.new(booking_params)
   end
@@ -24,16 +25,8 @@ class BookingsController < ApplicationController
   def index
     @user = current_user
     @bookings = @user.bookings
+
   end
 
-def show
-  @booking = Booking.find(params[:id])
-end
 
-
-  private
-
-  def booking_params
-    params.require(:booking).permit(:user_id, :costume_id, :start_time, :end_time, :status)
-  end
 end
