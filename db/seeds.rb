@@ -216,51 +216,36 @@ user = User.new(
 puts "Creating bookings..."
 
 booking = Booking.new(
-  user: User.find(2),
-  costume: Costume.find(1),
+  user: User.second,
+  costume: Costume.first,
   start_date: Date.today - 10,
   end_date: Date.today + 8,
   status: "Requested")
   booking.save
 
   booking = Booking.new(
-  user: User.find(3),
-  costume: Costume.find(2),
+  user: User.third,
+  costume: Costume.second,
   start_date: Date.today - 9,
   end_date: Date.today + 7,
   status: "Requested")
   booking.save
 
   booking = Booking.new(
-  user: User.find(1),
-  costume: Costume.find(4),
+  user: User.first,
+  costume: Costume.fourth,
   start_date: Date.today - 7,
   end_date: Date.today + 5,
   status: "Requested")
   booking.save
 
   booking = Booking.new(
-  user: User.find(3),
-  costume: Costume.find(5),
+  user: User.third,
+  costume: Costume.fifth,
   start_date: Date.today - 6,
   end_date: Date.today + 4,
   status: "Requested")
   booking.save
 
-  booking = Booking.new(
-  user: User.find(1),
-  costume: Costume.find(6),
-  start_date: Date.today - 5,
-  end_date: Date.today + 3,
-  status: "Requested")
-  booking.save
-
-  booking = Booking.new(
-  user: User.find(2),
-  costume: Costume.find(7),
-  start_date: Date.today - 4,
-  end_date: Date.today + 2,
-  status: "Requested")
-  booking.save
 
 puts "Finished seeding with #{User.count} users, #{Costume.count} costumes, and #{Booking.count} bookings"
