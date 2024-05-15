@@ -1,39 +1,33 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = booking.all
+    @bookings = Booking.where(user: current_user)
   end
 
   def new
-    @booking = Booking.new(booking_params)
-  enx
+    @booking = Booking.new
+  end
 
   def create
-    @user = current_user
-    @costume = Costume.find(params[:costume_id])
     @booking = Booking.new(booking_params)
-    @booking.costume = @costume
-    @booking.user = @user
-    @booking.save
-    if @booking.id
-      redirect_to costumes_path
+    @booking.user = current_user
+    @booking.costume = Costume.find(params[:costume_id])
+    @booking.status = 'pending'
+    if @booking.save
+      flash[:success] = "Booking created successfully!"
+      redirect_to bookings_path
     else
-      render 'new', status: :unprocessable_entity
+      render 'costumes/show'
     end
   end
 
-  def index
-    @user = current_user
-    @bookings = @user.bookings
+  def show
+    @booking = Booking.find(params[:id])
   end
-
-def show
-  @booking = Booking.find(params[:id])
-end
 
 
   private
 
   def booking_params
-    params.require(:booking).permit(:user_id, :costume_id, :start_time, :end_time, :status)
+    params.require(:booking).permit(:start_date, :end_date)
   end
 end
