@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new(booking_params)
-  enx
+  end
 
   def create
     @user = current_user
