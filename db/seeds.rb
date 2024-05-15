@@ -164,7 +164,7 @@ user = User.new(
   costume.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
   costume.save
 
-  file = URI.open("https://www.reddit.com/media?url=https%3A%2F%2Fi.redd.it%2F29rauzp1y49c1.jpeg")
+  file = URI.open("https://www.procosplay.jp/cdn/shop/products/quan-ye-cha-inuyasha-kosuchumu-mp002405-nan-xingxs-414_2000x.jpg?v=1619151822")
   costume = Costume.new(
     price: 3000,
     character: "Inuyasha",
@@ -202,7 +202,7 @@ user = User.new(
   costume.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
   costume.save
 
-  file = URI.open("https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.ezcosplay.com%2Fdragon-ball-son-goku-cosplay-costume.html&psig=AOvVaw1mmxFeMHeOppOlbaIwV6bv&ust=1715787462711000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMiN2NS8jYYDFQAAAAAdAAAAABAE")
+  file = URI.open("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFAXK7n7t9iZ61uZQ72eoQnDc24gbun1m9rQ&s")
   costume = Costume.new(
     price: 3500,
     character: "Son Goku",

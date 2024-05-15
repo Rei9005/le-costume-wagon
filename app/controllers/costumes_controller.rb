@@ -5,7 +5,7 @@ class CostumesController < ApplicationController
     if params[:query].present?
       @costumes = Costume.where('character ILIKE ?', "%#{params[:query]}%")
     else
-      @costumes = []
+      @costumes = Costume.all
     end
     render :index
 
