@@ -1,17 +1,18 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
+    <h3>le costume wagon</h3>
     <%= form_with url: costumes_path, method: :get, local: true, class: "search-bar" do %>
       <div class="field">
         <%= text_field_tag :query, params[:query], placeholder: "Search character" %>
       </div>
-      <%= submit_tag "Search" %>
+      <%= submit_tag "Search", class: "btn btn-gradient" %>
     <% end %>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <%# if user_signed_in? %>
+        <li class="nav-item active">
+          <%= link_to "My booking", bookings_path, class: "nav-link" %>
+        </li>
         <li class="nav-item active">
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
@@ -24,28 +25,29 @@
     </div>
   </div>
 </div>
-
 <div class="container">
-<% if @costumes.any? %>
-  <p><%= "#{Costume.count} costumes of #{params[:query]}" %></p>
+  <% if @costumes.any? %>
+    <%# <p><%= "#{Costume.count} costumes of #{params[:query]}" %></p>
   <div class="cards">
     <% @costumes.each do |costume| %>
-      <% if costume.photo.attached? %>
-        <div class="card-trip">
-          <% costume.photo.each do |photo| %>
-            <%= image_tag photo %>
+      <%= link_to costume_path(costume), class: 'card-trip-link text-decoration-none text-black' do %>
+        <% if costume.photo.attached? %>
+          <div class="card-trip">
+            <% costume.photo.each do |photo| %>
+              <%= image_tag photo %>
+            <% end %>
+          <% else %>
+            No image availables
           <% end %>
-        <% else %>
-          No image availables
-        <% end %>
-        <div class="card-trip-infos">
-          <div>
-            <h2><%= costume.character %></h2>
-            <p><%=costume.user.name %></p>
-            <p>¥<%= costume.price %></p>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= costume.character%></h2>
+              <p><%=costume.user.name %></p>
+              <p>¥<%= costume.price %></p>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   <% else %>
     <p>No costumes found</p>

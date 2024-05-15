@@ -120,7 +120,7 @@ user = User.new(
   file = URI.open("https://cdn.worldcosplay.net/140447/lelbfsyyjxjhslptpcwubjcvkjjitwownypkskdp-740.jpg")
   costume = Costume.new(
     price: 3000,
-    character: "Luffy      ",
+    character: "Luffy",
     size: "M",
     description: "Dress like Luffy and become the King of Pirates!")
   costume.user = user
