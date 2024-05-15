@@ -1,7 +1,14 @@
 class CostumesController < ApplicationController
 
   def index
-    @costumes = Costume.all
+
+    if params[:query].present?
+      @costumes = Costume.where('character ILIKE ?', "%#{params[:query]}%")
+    else
+      @costumes = []
+    end
+    render :index
+
   end
 
   def show
