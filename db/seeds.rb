@@ -147,13 +147,60 @@ file = URI.open("https://cdn.worldcosplay.net/140447/lelbfsyyjxjhslptpcwubjcvkjj
   costume4.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
   costume4.save
 
-  file = URI.open("https://cdn.worldcosplay.net/140447/lelbfsyyjxjhslptpcwubjcvkjjitwownypkskdp-740.jpg")
+  file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Monkey_D._Luffy_cosplayer_%2823570810656%29.jpg/2560px-Monkey_D._Luffy_cosplayer_%2823570810656%29.jpg")
   costume5 = Costume.new(
     price: rand(100..7000),
     character: "Luffy",
     size: "M",
-    description: "this is Luffy",
+    description: "this is Luffy"
   )
   costume5.user = user
   costume5.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
   costume5.save
+
+  file = URI.open("https://img.ponparemall.net/imgmgr/77/00102677/itemimage20/69786.jpg?ver=1&size=pict650_650")
+  costume6 = Costume.new(
+    price: rand(100..7000),
+    character: "Pikachu",
+    size: "L",
+    description: "Pikachu!!!!!"
+  )
+  costume6.user = user
+  costume6.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
+  costume6.save
+
+
+  file = URI.open("https://img.ponparemall.net/imgmgr/77/00102677/itemimage20/69786.jpg?ver=1&size=pict650_650")
+  costume7 = Costume.new(
+    price: rand(100..7000),
+    character: "Pikachu",
+    size: "L",
+    description: "Pikachu!!!!!"
+  )
+  costume7.user = user
+  costume7.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
+  costume7.save
+
+
+  file = URI.open("https://img.ponparemall.net/imgmgr/77/00102677/itemimage20/69786.jpg?ver=1&size=pict650_650")
+  costume8 = Costume.new(
+    price: rand(100..7000),
+    character: "Pikachu",
+    size: "L",
+    description: "Pikachu!!!!!"
+  )
+  costume8.user = user
+  costume8.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
+  costume8.save
+
+
+  file = URI.open("https://img.ponparemall.net/imgmgr/77/00102677/itemimage20/69786.jpg?ver=1&size=pict650_650")
+  costume9 = Costume.new(
+    price: rand(100..7000),
+    character: "Pikachu",
+    size: "L",
+    description: "Pikachu!!!!!"
+  )
+  costume9.user = user
+  costume9.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
+  costume9.save
