@@ -1,1 +1,36 @@
-<h1>show page</h1>
+<%# <h1>show page</h1> %>
+
+<%= content_for :title, @costume.character %>
+
+<div class="costume-details container">
+  <h1 class="mt-4"><%= @costume.character %></h1>
+
+  <div class="costume-photo mt-3">
+    <% if @costume.photo.attached? %>
+      <% @costume.photo.each do |photo| %>
+        <%= image_tag photo, alt: @costume.character, class: 'img-fluid' %>
+      <% end %>
+    <% else %>
+      <%= image_tag 'default_costume.jpg', alt: 'Default Costume photo', class: 'img-fluid' %>
+    <% end %>
+  </div>
+
+  <div class="costume-description mt-4">
+    <h2>Description</h2>
+    <p><%= @costume.description %></p>
+  </div>
+
+  <div class="costume-details mt-4">
+    <h2>Details</h2>
+    <ul class="list-unstyled">
+      <li><strong>Size:</strong> <%= @costume.size %></li>
+      <li><strong>Price:</strong> $<%= @costume.price %></li>
+    </ul>
+  </div>
+
+  <div class="costume-actions mt-4">
+    <%= link_to 'Rent this Costume', new_costume_path(@costume), class: 'btn btn-primary' %>
+    <%= link_to 'Back to Costumes', costumes_path, class: 'btn btn-secondary' %>
+  </div>
+</div>
+<%= render "bookings/form" %>
