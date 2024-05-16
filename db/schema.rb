@@ -66,14 +66,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_16_040629) do
     t.index ["user_id"], name: "index_costumes_on_user_id"
   end
 
-  create_table "monuments", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.date "opening_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"

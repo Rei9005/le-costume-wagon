@@ -8,9 +8,9 @@ class Owner::BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     if @booking.update(booking_params)
-      # redirect_to # up to you...
+      redirect_to owner_bookings_path
     else
-      # render # where was the booking update form?
+      render :index
     end
   end
 
