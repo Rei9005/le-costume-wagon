@@ -24,7 +24,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
+# gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
@@ -80,3 +80,5 @@ gem "devise"
 
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.16.0'
+gem 'acts-as-taggable-on', '~> 5.0'
+
