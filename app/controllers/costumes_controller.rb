@@ -7,9 +7,19 @@ class CostumesController < ApplicationController
     else
       @costumes = Costume.all
     end
-    render :index
+
+    if params[:sort_by] == 'cost_asc'
+      @costumes = @costumes.order(price: :asc)
+    elsif params[:sort_by] == 'cost_desc'
+      @costumes = @costumes.order(price: :desc)
+    end
+
 
   end
+
+
+
+
 
   def show
     @costume = Costume.find(params[:id])
@@ -22,8 +32,9 @@ class CostumesController < ApplicationController
 
   def create
     @costume = Costume.new(costume_params)
+    @costume.user = current_user
     if @costume.save
-      redirect_to @costume, notice: 'Costume was successfully created.'
+      redirect_to costume_path(@costume), notice: 'Costume was successfully created.'
     else
       render :new
     end
@@ -31,7 +42,9 @@ class CostumesController < ApplicationController
 
   private
 
+  private
+
   def costume_params
-    params.require(:costume).permit(:name, :price, :size, :description, :image)
+    params.require(:costume).permit(:character, :price, :size, :description, photo: [])
   end
 end

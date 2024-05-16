@@ -11,4 +11,6 @@ class Costume < ApplicationRecord
   validates :character, presence: true
   validates :size, presence: true
   validates :description, presence: true, length: { minimum: 5 }
+  validates :character, :price, :size, :description, :genre, presence: true
+
 end
