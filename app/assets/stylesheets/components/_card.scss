@@ -4,12 +4,14 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   height: 250px;
-  width: 200px;
+  width: 200px
 }
+
 
 .card-trip:hover {
   transform: scale(1.05);
 }
+
 
 .card-trip > img {
   height: 70%;
@@ -45,6 +47,7 @@
   top: -20px;
   width: 40px;
 }
+
 
 .cards {
   display: grid;
