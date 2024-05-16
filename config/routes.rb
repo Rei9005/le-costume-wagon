@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
-  resources :bookings, only: [:index, :update]
+  resources :bookings, only: [:index]
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
 
   namespace :owner do
-    resources :bookings, only: [:index]
+    resources :bookings, only: [:index, :update]
 
     # equivalent to => get 'vendor/bookings', to: 'vendor/bookings#index'
   end

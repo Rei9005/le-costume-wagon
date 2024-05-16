@@ -15,5 +15,8 @@ class Booking < ApplicationRecord
     (days * costume.price).to_i
   end
 
+  def pending?
+    status == 'Requested'
+  end
 
 end
