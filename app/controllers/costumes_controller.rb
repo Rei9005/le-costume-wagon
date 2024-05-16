@@ -7,9 +7,17 @@ class CostumesController < ApplicationController
     else
       @costumes = Costume.all
     end
-    render :index
 
+    if params[:sort_by] == 'cost_asc'
+      @costumes = @costumes.order(price: :asc)
+    elsif params[:sort_by] == 'cost_desc'
+      @costumes = @costumes.order(price: :desc)
+    end
   end
+
+
+
+
 
   def show
     @costume = Costume.find(params[:id])
@@ -31,7 +39,9 @@ class CostumesController < ApplicationController
 
   private
 
+  private
+
   def costume_params
-    params.require(:costume).permit(:name, :price, :size, :description, :image)
+    params.require(:costume).permit(:character, :price, :size, :description, photos: [])
   end
 end
