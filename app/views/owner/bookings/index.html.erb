@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>My costumes requested by others </h1>
+  <% @bookings.each do |booking| %>
+    <div class="card-product">
+      <div class="d-flex justify-content-between">
+      <%= cl_image_tag booking.costume.photo.first.key  %>
+        <div class="card-product-infos">
+          <h2><%= booking.costume.character %> is requested by <%= booking.user.name %></h2>
+          <p><%= booking.start_date %> to <%= booking.end_date %>
+            <p><%= booking.days %> days at <%= number_to_currency(booking.costume.price, {unit: '¥', precision: 0}) %>/day = <strong><%= number_to_currency(booking.total, {unit: '¥', precision: 0}) %></strong></p>
+            <div class="d-flex justify-content-between">
+              <p>Status: <strong><%= booking.status %></strong></p>
+            </div>
+          </div>
+        </div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between">
+          <%= simple_form_for booking do |f| %>
+            <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+            <%= f.submit 'Accept', class: 'btn btn-outline-success' %>
+          <% end %>
+          <%= simple_form_for booking do |f| %>
+            <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+            <%= f.submit 'Reject', class: 'btn btn-outline-danger' %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <a href="/costumes" class="btn btn-primary" role="button">Home</a>
