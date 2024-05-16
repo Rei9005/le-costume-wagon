@@ -13,6 +13,8 @@ class CostumesController < ApplicationController
     elsif params[:sort_by] == 'cost_desc'
       @costumes = @costumes.order(price: :desc)
     end
+
+
   end
 
 
