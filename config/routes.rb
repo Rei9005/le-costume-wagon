@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
-  resources :bookings, only: [:index] 
+  resources :bookings, only: [:index, :update]
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -18,4 +18,14 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live
   # Defines the root path route ("/")
   # root "posts#index"
+
+
+
+  namespace :owner do
+    resources :bookings, only: [:index]
+
+    # equivalent to => get 'vendor/bookings', to: 'vendor/bookings#index'
+  end
+
+
 end

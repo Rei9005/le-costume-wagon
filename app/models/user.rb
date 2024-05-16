@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :bookings
   has_many :costumes
+  has_many :bookings_as_owner, through: :costumes, source: :bookings
+  # Need the above for the owner to see his/her bookings
 
   validates :email, presence: true, format: { with: /\A.*@.*\.com\z/ }
   validates :encrypted_password, presence: true, length: { minimum: 10 }

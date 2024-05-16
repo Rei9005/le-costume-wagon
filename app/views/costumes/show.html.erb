@@ -34,7 +34,8 @@
 </div>
 
 <div class="costume-details container">
-  <h1 class="mt-4"><%= @costume.character %></h1>
+  <div class="d-flex">
+    <div class="me-5">
 
   <div class="costume-photo mt-3">
     <% if @costume.photo.attached? %>
@@ -45,7 +46,10 @@
       <%= image_tag 'default_costume.jpg', alt: 'Default Costume photo', class: 'img-fluid' %>
     <% end %>
   </div>
+  <h1 class="mt-4"><%= @costume.character %></h1>
 
+</div>
+<div>
   <div class="costume-description mt-4">
     <h2>Description</h2>
     <p><%= @costume.description %></p>
@@ -60,3 +64,5 @@
   </div>
 
 <%= render "bookings/form" %>
+  </div>
+</div>
