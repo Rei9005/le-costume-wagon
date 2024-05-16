@@ -39,7 +39,9 @@ class CostumesController < ApplicationController
 
   private
 
+  private
+
   def costume_params
-    params.require(:costume).permit(:name, :price, :size, :description, :image)
+    params.require(:costume).permit(:character, :price, :size, :description, photos: [])
   end
 end
