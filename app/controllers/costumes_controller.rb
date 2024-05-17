@@ -1,24 +1,25 @@
 class CostumesController < ApplicationController
 
   def index
-    @costumes = Costume.all
 
     if params[:query].present?
-      @costumes = @costumes.where('character ILIKE ?', "%#{params[:query]}%")
+      @costumes = Costume.where('character ILIKE ?', "%#{params[:query]}%")
+    else
+      @costumes = Costume.all
     end
 
-    if params[:genres].present?
-      @costumes = @costumes.where(genre: params[:genres])
+    if params[:sort_by] == 'cost_asc'
+      @costumes = @costumes.order(price: :asc)
+    elsif params[:sort_by] == 'cost_desc'
+      @costumes = @costumes.order(price: :desc)
     end
 
-    if params[:sort_by].present?
-      if params[:sort_by] == 'cost_asc'
-        @costumes = @costumes.order(price: :asc)
-      elsif params[:sort_by] == 'cost_desc'
-        @costumes = @costumes.order(price: :desc)
-      end
-    end
+
   end
+
+
+
+
 
   def show
     @costume = Costume.find(params[:id])
@@ -44,6 +45,6 @@ class CostumesController < ApplicationController
   private
 
   def costume_params
-    params.require(:costume).permit(:character, :price, :size, :description, photo: [])
+    params.require(:costume).permit(:character, :description, :size, :price, :genre, photo: [])
   end
 end
