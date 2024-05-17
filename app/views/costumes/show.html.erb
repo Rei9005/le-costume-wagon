@@ -1,53 +1,51 @@
 <%= content_for :title, @costume.character %>
-
 <div class="costume-details container">
   <div class="d-flex">
-
-
-      <div class="costume-photo mt-3 w-50">
-        <% if @costume.photo.attached? %>
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                <% @costume.photo.each_with_index do |photo, index| %>
-                  <div class="carousel-item <%= index.zero? ? 'active' :''  %>"> 
-                    <%= image_tag photo, alt: @costume.character, class: 'img-fluid d-block w-100' %>   
-                  </div> 
-                <% end %>
+    <div class="costume-photo mt-3 w-50">
+      <% if @costume.photo.attached? %>
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <% @costume.photo.each_with_index do |photo, index| %>
+              <div class="carousel-item <%= index.zero? ? 'active' :''  %>">
+                <%= image_tag photo, alt: @costume.character, class: 'img-fluid d-block w-100' %>
               </div>
-       .      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
+            <% end %>
+          </div>
+          .      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      <% else %>
+        <%= image_tag 'default_costume.jpg', alt: 'Default Costume photo', class: 'img-fluid' %>
+      <% end %>
+    </div>
+    <div class='w-50 ms-5'>
+      <div class="costume-description mt-4">
+        <h1 class="mt-4"><%= @costume.character %></h1>
+        <h2>Description</h2>
+        <p><%= @costume.description %></p>
+      </div>
+      <div class="costume-details mt-4">
+        <h2>Details</h2>
+        <ul class="list-unstyled">
+          <li><strong>Size:</strong> <%= @costume.size %></li>
+          <li><strong>Price per day:</strong> <%= number_to_currency(@costume.price, {unit: '¥', precision: 0}) %></li>
+        </ul>
+      </div>
+      <% if current_user == @costume.user %>
+        <div class="align-self-center">
+          <div class="alert alert-secondary" role="alert">
+            <h4 class="alert-heading">Not available for rent</h4>
+            <p>This costume belongs to you.</p>
+          </div>
         <% else %>
-          <%= image_tag 'default_costume.jpg', alt: 'Default Costume photo', class: 'img-fluid' %>
+          <%= render "bookings/form" %>
         <% end %>
-
       </div>
-
-      <div class='w-50 ms-5'>
-        <div class="costume-description mt-4">
-          <h1 class="mt-4"><%= @costume.character %></h1>
-          <h2>Description</h2>
-          <p><%= @costume.description %></p>
-        </div>
-
-        <div class="costume-details mt-4">
-          <h2>Details</h2>
-          <ul class="list-unstyled">
-            <li><strong>Size:</strong> <%= @costume.size %></li>
-            <li><strong>Price:</strong> <%= number_to_currency(@costume.price, {unit: '¥', precision: 0}) %></li>
-          </ul>
-        </div>
-
-        <%= render "bookings/form" %>
-      </div>
+    </div>
   </div>
-
-</div>
-
-
