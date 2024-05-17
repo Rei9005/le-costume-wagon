@@ -34,6 +34,7 @@
         <h2>Details</h2>
         <ul class="list-unstyled">
           <li><strong>Size:</strong> <%= @costume.size %></li>
+
           <li><strong>Price per day:</strong> <%= number_to_currency(@costume.price, {unit: '¥', precision: 0}) %></li>
         </ul>
       </div>
@@ -49,3 +50,4 @@
       </div>
     </div>
   </div>
+
