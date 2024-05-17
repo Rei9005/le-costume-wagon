@@ -2,29 +2,34 @@
 <div class="costume-details container">
   <div class="d-flex">
     <div class="me-5">
-      <div class="costume-photo mt-3">
-        <% if @costume.photo.attached? %>
-          <% @costume.photo.each do |photo| %>
-            <%= image_tag photo, alt: @costume.character, class: 'img-fluid' %>
-          <% end %>
-        <% else %>
-          <%= image_tag 'default_costume.jpg', alt: 'Default Costume photo', class: 'img-fluid' %>
-        <% end %>
-      </div>
-      <h1 class="mt-4"><%= @costume.character %></h1>
-    </div>
-    <div>
-      <div class="costume-description mt-4">
-        <h2>Description</h2>
-        <p><%= @costume.description %></p>
-      </div>
-      <div class="costume-details mt-4">
-        <h2>Details</h2>
-        <ul class="list-unstyled">
-          <li><strong>Size:</strong> <%= @costume.size %></li>
-          <li><strong>Price:</strong> $<%= @costume.price %></li>
-        </ul>
-      </div>
-      <%= render "bookings/form" %>
-    </div>
+
+  <div class="costume-photo mt-3">
+    <% if @costume.photo.attached? %>
+      <% @costume.photo.each do |photo| %>
+        <%= image_tag photo, alt: @costume.character, class: 'img-fluid' %>
+      <% end %>
+    <% else %>
+      <%= image_tag 'default_costume.jpg', alt: 'Default Costume photo', class: 'img-fluid' %>
+    <% end %>
   </div>
+  <h1 class="mt-4"><%= @costume.character %></h1>
+</div>
+<div>
+  <div class="costume-description mt-4">
+    <h2>Description</h2>
+    <p><%= @costume.description %></p>
+  </div>
+
+  <div class="costume-details mt-4">
+    <h2>Details</h2>
+    <ul class="list-unstyled">
+      <li><strong>Size:</strong> <%= @costume.size %></li>
+      <li><strong>Price:</strong> ¥<%= @costume.price %></li>
+      <li><strong>Genre:</strong> <%= @costume.genre %></li>
+    </ul>
+  </div>
+
+<%= render "bookings/form" %>
+  </div>
+</div>
+
