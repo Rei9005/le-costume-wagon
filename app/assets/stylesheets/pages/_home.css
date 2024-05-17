@@ -1,0 +1,12 @@
+.home-image {
+  height: 800px;
+  width: 1300px;
+  object-fit: cover;
+  margin: auto;
+  padding: 0;
+  display: block;
+}
+
+.home-image:hover {
+  transform: scale(1.1);
+}
