@@ -127,7 +127,7 @@ user = User.new(
   costume.save
 
   file = URI.open("https://i.ebayimg.com/images/g/vu4AAOSwDRNeluFU/s-l1600.jpg")
-  costume = Costume.new(price: 2200, character: "Iron Man", size: "L", description: "A billionaire in a high-tech armor suit", genre: "Star Wars")
+  costume = Costume.new(price: 2200, character: "Iron Man", size: "L", description: "A billionaire in a high-tech armor suit", genre: "Marvel")
   costume.user = user
   costume.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
   costume.save

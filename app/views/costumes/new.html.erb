@@ -1,49 +1,39 @@
 <%# app/views/costumes/new.html.erb %>
-
 <%= content_for :title, "Post a Costume for Rent" %>
-
 <div class="container mt-5">
   <h1 class="mb-4">Post a Costume for Rent</h1>
-
   <%= form_with model: @costume, local: true, html: { multipart: true, class: "costume-form" } do |form| %>
     <div class="mb-3">
       <%= form.label :character, "Character Name" %>
       <%= form.text_field :character, class: "form-control", placeholder: "Enter the character name" %>
     </div>
-
     <div class="mb-3">
       <%= form.label :photo, "Upload Photos" %>
       <%= form.file_field :photo, multiple: true, class: "form-control", id: "photo_upload", accept: "image/*" %>
       <small class="form-text text-muted">You can upload up to 3 photos.</small>
       <div id="photo_preview" class="mt-3 d-flex flex-wrap"></div>
     </div>
-
     <div class="mb-3">
       <%= form.label :description, "Description" %>
       <%= form.text_area :description, class: "form-control", rows: 5, placeholder: "Enter a description of the costume" %>
     </div>
-
     <div class="mb-3">
       <%= form.label :size, "Size" %>
       <%= form.select :size, options_for_select(['S', 'M', 'L']), { prompt: 'Select Size' }, class: "form-control" %>
     </div>
-
     <div class="mb-3">
-      <%= form.label :price, "Price ($)" %>
+      <%= form.label :price, "Price (¥)" %>
       <%= form.number_field :price, class: "form-control", placeholder: "Enter the rental price" %>
     </div>
-
     <div class="mb-3">
       <%= form.label :genre %>
       <%= form.select :genre, ['Movies', 'Scary', 'Japanese anime', 'Superhero', 'Pixar', 'Food', 'Marvel', 'Pets', 'Star Wars'], { prompt: 'Select Genre' }, class: "form-control" %>
     </div>
-
     <div class="mb-4">
       <%= form.submit "Post Costume", class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>
-
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const photoUpload = document.getElementById("photo_upload");
