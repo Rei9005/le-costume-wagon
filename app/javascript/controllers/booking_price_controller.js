@@ -20,7 +20,7 @@ export default class extends Controller {
       const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
       if (diffInDays > 0) {
         // displays the total price per nigh
-        this.infoTarget.innerText = `¥${pricePerDay} x ${diffInDays} nights`;
+        this.infoTarget.innerText = `¥${pricePerDay.toLocaleString()} x ${diffInDays} nights`;
         this.priceTarget.innerHTML = `<span>¥${(
           diffInDays * pricePerDay
         ).toLocaleString()}</span> <small class='fw-light'>total</small> `;
