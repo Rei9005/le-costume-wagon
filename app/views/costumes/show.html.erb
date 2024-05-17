@@ -34,10 +34,20 @@
         <h2>Details</h2>
         <ul class="list-unstyled">
           <li><strong>Size:</strong> <%= @costume.size %></li>
-          <li><strong>Price:</strong> <%= number_to_currency(@costume.price, {unit: '¥', precision: 0}) %></li>
+
+          <li><strong>Price per day:</strong> <%= number_to_currency(@costume.price, {unit: '¥', precision: 0}) %></li>
         </ul>
       </div>
-      <%= render "bookings/form" %>
+      <% if current_user == @costume.user %>
+        <div class="align-self-center">
+          <div class="alert alert-secondary" role="alert">
+            <h4 class="alert-heading">Not available for rent</h4>
+            <p>This costume belongs to you.</p>
+          </div>
+        <% else %>
+          <%= render "bookings/form" %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+
