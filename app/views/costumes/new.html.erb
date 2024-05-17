@@ -31,12 +31,12 @@
       <%= form.number_field :price, class: "form-control", placeholder: "Enter the rental price" %>
     </div>
 
-    <div class="field">
+    <div class="mb-3">
       <%= form.label :genre %>
-      <%= form.select :genre, ['Star Wars', 'Food', 'Scary', 'Pets', 'Movies', 'Superhero'], { prompt: 'Select Genre' }, class: "form-control" %>
+      <%= form.select :genre, ['Movies', 'Scary', 'Japanese anime', 'Superhero', 'Pixar', 'Food', 'Marvel', 'Pets', 'Star Wars'], { prompt: 'Select Genre' }, class: "form-control" %>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-4">
       <%= form.submit "Post Costume", class: "btn btn-primary" %>
     </div>
   <% end %>
