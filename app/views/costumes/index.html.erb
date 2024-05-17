@@ -1,49 +1,18 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <h1>le costume wagon</h1>
-    <%= form_with url: costumes_path, method: :get, local: true, class: "search-bar" do %>
-      <div class="search-container"><%= text_field_tag :query, params[:query], placeholder: "Search character", class: "search" %>
-        <i class="fa-solid fa-magnifying-glass search-icon"></i>
-      </div>
-    <% end %>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <%= link_to "Home", costumes_path, class: "nav-link" %>
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://img.freepik.com/premium-vector/male-avatar-icon-unknown-or-anonymous-person-default-avatar-profile-icon-social-media-user-business-man-man-profile-silhouette-isolated-on-white-background-vector-illustration_735449-120.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "My booking", bookings_path, class: "dropdown-item" %>
-              <%= link_to "My posting", owner_bookings_path, class: "dropdown-item" %>
-              <%= link_to "Post new costume", new_costume_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item"-->
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
-</div>
 <%= form_tag costumes_path, method: :get do %>
   <div class="container">
     <div class="dropdown-filter d-flex justify-content-between mb-5">
-      <div class="filter">
-        <label>Genres</label><br>
-        <%= check_box_tag 'genres[]', 'Movies', params[:genres].present? && params[:genres].include?('Movies'), onchange: "this.form.submit();" %> Movies
-        <%= check_box_tag 'genres[]', 'Scary', params[:genres].present? && params[:genres].include?('Scary'), onchange: "this.form.submit();"  %> Scary
-        <%= check_box_tag 'genres[]', 'Japanese anime', params[:genres].present? && params[:genres].include?('Japanese anime'), onchange: "this.form.submit();"  %> Japanese anime
-        <%= check_box_tag 'genres[]', 'Superhero', params[:genres].present? && params[:genres].include?('Superhero'), onchange: "this.form.submit();"  %> Superhero
-        <%= check_box_tag 'genres[]', 'Pixar', params[:genres].present? && params[:genres].include?('Pixar'), onchange: "this.form.submit();"  %> Pixar
-        <%= check_box_tag 'genres[]', 'Food', params[:genres].present? && params[:genres].include?('Food'), onchange: "this.form.submit();"  %> Food
-        <%= check_box_tag 'genres[]', 'Marvel', params[:genres].present? && params[:genres].include?('Marvel'), onchange: "this.form.submit();"  %> Marvel
-        <%= check_box_tag 'genres[]', 'Pets', params[:genres].present? && params[:genres].include?('Pets'), onchange: "this.form.submit();"  %> Pets
-        <%= check_box_tag 'genres[]', 'Star Wars', params[:genres].present? && params[:genres].include?('Star Wars'), onchange: "this.form.submit();"  %> Star Wars
-      </div>
+      <fieldset class="form-group check_boxes optional snippet_tags">
+        <legend class="col-form-label pt-0">Genres</legend>
+        <%= hidden_field_tag 'genres[]', nil %>
+        <% genres = [['Movies', 'Movies'], ['Scary', 'Scary'], ['Japanese anime', 'Japanese anime'], ['Superhero', 'Superhero'], ['Pixar', 'Pixar'], ['Food', 'Food'], ['Marvel', 'Marvel'], ['Pets', 'Pets'], ['Star Wars', 'Star Wars']] %>
+        <% genres.each do |genre, param| %>
+          <% id_param = param.downcase.gsub(' ', '_') %>
+          <div class="tag-item">
+            <%= check_box_tag 'genres[]', param, params[:genres].present? && params[:genres].include?(param), class: 'form-check-input check_boxes optional tag-selector', id: "snippet_tag_ids_#{id_param}", onchange: "this.form.submit();" %>
+            <%= label_tag "snippet_tag_ids_#{id_param}", genre, class: 'form-check-label collection_check_boxes' %>
+          </div>
+        <% end %>
+      </fieldset>
       <div class="dropdown">
         <label>Sort by Price</label><br>
         <%= select_tag 'sort_by', options_for_select([['Low to High', 'cost_asc'], ['High to Low', 'cost_desc']], params[:sort_by]), onchange: "this.form.submit();", class: "dropdown" %>
