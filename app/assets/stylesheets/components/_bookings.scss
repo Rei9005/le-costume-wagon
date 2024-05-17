@@ -1,0 +1,68 @@
+.booking {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 0;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,.5);
+
+  .booking-img {
+    height: 100%;
+    width: 120px;
+    object-fit: cover;
+  }
+
+
+
+  .booking-left {
+    display: flex;
+    align-items: center;
+  }
+
+  .booking-actions {
+    display: flex;
+    align-items: center;
+  }
+  .booking-tag {
+    margin: 1px 4px;
+    padding: 2px 5px 0px 5px;
+    background-color: #bfbfbf;
+    color: white;
+    border-radius: 8px;
+    font-weight: lighter;
+    font-size: 12px;
+  }
+
+  .booking-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 8px;
+  }
+    .booking-info-title {
+      font-weight: bolder;
+      font-size: 1.2em;
+    }
+
+    .booking-info-details {
+      font-weight: lighter;
+    }
+
+    .booking-financial {
+      display: flex;
+      flex-direction: column;
+      margin-left: 8px;
+
+      .booking-financial-title {
+        font-weight: bolder;
+        font-size: 1.2em;
+      }
+
+      .booking-financial-details {
+        font-weight: lighter;
+      }
+    }
+  }

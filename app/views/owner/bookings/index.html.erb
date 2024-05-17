@@ -1,20 +1,43 @@
 <div class="container">
   <h1>My costumes requested by others </h1>
-  <% @bookings.each do |booking| %>
-    <div class="card-product justify-content-between">
-      <%= cl_image_tag booking.costume.photo.first.key  %>
-      <div class="d-flex align-items-start justify-content-between">
-        <div>
-          <h2><%= booking.costume.character %> is requested by <%= booking.user.name %></h2>
-          <p>Booking ID: <%= booking.id %></p>
-          <p>From <%= booking.start_date %> to <%= booking.end_date %></p>
-          <p>Status: <strong><%= booking.status %></strong></p>
+  <div class="bookings">
+    <% @bookings.each do |booking| %>
+      <div class="booking">
+        <div class='booking-left'>
+          <!-- if you're using cloudinary and activestorage -->
+          <%= cl_image_tag booking.costume.photo.first.key, class: "booking-img" %>
+          <div class="booking-info">
+            <!-- the status info was placed here just for testing purposes
+            <p>Booking ID: <%= booking.id %></p>
+            -->
+            <div class="booking-info-title align-self-center">
+              <%= booking.costume.character %> is requested by
+            </div>
+            <h3 class="align-self-center"><%= booking.user.name %></h3>
+            <!-- there is a strange gap between the stars and name -->
+            <form class="star-rating align-self-center">
+              <input type="radio" name="review[rating]" value="1" />
+              <input type="radio" name="review[rating]" value="2" />
+              <input type="radio" name="review[rating]" value="3" checked />
+              <input type="radio" name="review[rating]" value="4" />
+              <input type="radio" name="review[rating]" value="5" />
+            </form>
+            <!-- need this space because the dates below will otherwise be too
+            close to the stars above -->
+            <p></p>
+            <div class="booking-info-details">
+              From <%= booking.start_date %> to <%= booking.end_date %>
+              <!-- the status info was placed here just for testing purposes
+            <p>Status: <strong><%= booking.status %></strong></p>
+            -->
+            </div>
+          </div>
         </div>
-        <div class="d-flex align-items-start justify-content-between">
+        <div class="booking-financial">
           <h2><%= number_to_currency(booking.total, {unit: '¥', precision: 0}) %></h2>
           <p>(<%= booking.days %> days at <%= number_to_currency(booking.costume.price, {unit: '¥', precision: 0}) %>/day)</p>
         </div>
-        <div>
+        <div class="booking-actions">
           <% if booking.pending? %>
             <!-- Accept Button-->
             <%= simple_form_for [:owner, booking] do |f| %>
@@ -32,7 +55,6 @@
           <% end %>
         </div>
       </div>
-    </div>
-  <% end %>
-  <a href="/costumes" class="btn btn-primary" role="button">Home</a>
+    <% end %>
+  </div>
 </div>

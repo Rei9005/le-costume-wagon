@@ -1,18 +1,51 @@
 <div class="container">
   <h1>My Bookings</h1>
-  <h2>Costumes I'm renting</h2>
-  <ol>
-    <% @bookings.each do |booking| %>
-      <ul>Booking ID: <%= booking.id %></ul>
-      <ul>Character: <%= booking.costume.character %></ul>
-      <ul>Owner of Costume: <%= booking.costume.user.name %></ul>
-      <ul>Rent Start: <%= booking.start_date %></ul>
-      <ul>Rent End <%= booking.end_date %></ul>
-      <ul>Price per day<%= booking.costume.price %></ul>
-      <ul>Days Rented <%= booking.days %></ul>
-      <ul>Rental Total <%= booking.total%></ul>
-      <p>------------------------------</p>
-    <% end %>
-    <h2>My costumes others are renting</h2>
+  <div class="bookings">
+    <div class="bookings">
+      <% @bookings.each do |booking| %>
+        <div class="booking">
+          <div class='booking-left'>
+            <!-- if you're using cloudinary and activestorage -->
+            <%= cl_image_tag booking.costume.photo.first.key, class: "booking-img" %>
+            <div class="booking-info">
+              <!-- the status info was placed here just for testing purposes
+            <p>Booking ID: <%= booking.id %></p>
+            -->
+              <div class="booking-info-title align-self-center">
+                You are booking
+              </div>
+              <h3 class="align-self-center"><%= booking.costume.character %></h3>
+              <div class="booking-info-title align-self-center">
+                from
+                <h3 class="align-self-center"><%= booking.costume.user.name %></h3>
+              </div>
+              <!-- there is a strange gap between the stars and name -->
+              <form class="star-rating align-self-center">
+                <input type="radio" name="review[rating]" value="1" />
+                <input type="radio" name="review[rating]" value="2" />
+                <input type="radio" name="review[rating]" value="3" checked />
+                <input type="radio" name="review[rating]" value="4" />
+                <input type="radio" name="review[rating]" value="5" />
+              </form>
+              <!-- need this space because the dates below will otherwise be too
+            close to the stars above -->
+              <p></p>
+              <div class="booking-info-details">
+                From <%= booking.start_date %> to <%= booking.end_date %>
+                <!-- the status info was placed here just for testing purposes
+            <p>Status: <strong><%= booking.status %></strong></p>
+            -->
+              </div>
+            </div>
+          </div>
+          <div class="booking-financial">
+            <h2><%= number_to_currency(booking.total, {unit: '¥', precision: 0}) %></h2>
+            <p>(<%= booking.days %> days at <%= number_to_currency(booking.costume.price, {unit: '¥', precision: 0}) %>/day)</p>
+          </div>
+          <div class="booking-actions">
+            <button type="button" class="btn btn-dark"><%= booking.status %></button>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <a href="/costumes" class="btn btn-primary" role="button">Home</a>
