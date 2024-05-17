@@ -1,11 +1,10 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <h3>le costume wagon</h3>
+    <h1>le costume wagon</h1>
     <%= form_with url: costumes_path, method: :get, local: true, class: "search-bar" do %>
-      <div class="field">
-        <%= text_field_tag :query, params[:query], placeholder: "Search character" %>
+      <div class="search-container"><%= text_field_tag :query, params[:query], placeholder: "Search character", class: "search" %>
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
       </div>
-      <%= submit_tag "Search", class: "btn btn-gradient" %>
     <% end %>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <%= link_to "Home", costumes_path, class: "nav-link" %>
@@ -15,6 +14,8 @@
             <%= image_tag "https://img.freepik.com/premium-vector/male-avatar-icon-unknown-or-anonymous-person-default-avatar-profile-icon-social-media-user-business-man-man-profile-silhouette-isolated-on-white-background-vector-illustration_735449-120.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "My booking", bookings_path, class: "dropdown-item" %>
+              <%= link_to "My posting", owner_bookings_path, class: "dropdown-item" %>
+              <%= link_to "Post new costume", new_costume_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
             </div>
           </li>
@@ -28,9 +29,9 @@
   </div>
 </div>
 </div>
-<div class="container">
-  <%= form_tag costumes_path, method: :get do %>
-    <div class="dropdown-filter d-flex justify-content-between mb-4">
+<%= form_tag costumes_path, method: :get do %>
+  <div class="container">
+    <div class="dropdown-filter d-flex justify-content-between mb-5">
       <div class="filter">
         <label>Genres</label><br>
         <%= check_box_tag 'genres[]', 'Movies', params[:genres].present? && params[:genres].include?('Movies'), onchange: "this.form.submit();" %> Movies
@@ -66,7 +67,7 @@
             <div>
               <h2><%= costume.character%></h2>
               <p><%=costume.user.name %></p>
-              <h2>¥<%= costume.price %></h2>
+              <h1 class="price-right">¥<%= costume.price %></h1>
             </div>
           </div>
         </div>

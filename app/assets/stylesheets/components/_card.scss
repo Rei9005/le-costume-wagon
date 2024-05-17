@@ -1,7 +1,7 @@
 .card-trip {
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
   border-radius: 20px;
   height: 250px;
   width: 200px
@@ -16,29 +16,37 @@
 .card-trip > img {
   height: 70%;
   width: 100%;
-  object-fit: contain;
-  background-color: #F5F5F5;
-  border-radius: 20px;
+  object-fit: cover;
+  object-position: 0 10%;
+  background-color: black;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .card-trip h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+  color:black;
+}
+
+.card-trip h1 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  color:black;
 }
 
 .card-trip p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
+  color: black;
 }
 
 .card-trip .card-trip-infos {
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
+  padding: 10px;
+  padding-bottom: 5px;
 }
 
 .card-trip-infos .card-trip-user {
@@ -51,6 +59,48 @@
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 16px;
+  padding-bottom: 30px;
+}
+
+.price-right {
+  text-align: right;
+  font-size: 18px;
+}
+
+
+
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr ;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;;
+  }
 }
