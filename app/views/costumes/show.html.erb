@@ -47,7 +47,6 @@
     <% end %>
   </div>
   <h1 class="mt-4"><%= @costume.character %></h1>
-
 </div>
 <div>
   <div class="costume-description mt-4">
@@ -59,7 +58,8 @@
     <h2>Details</h2>
     <ul class="list-unstyled">
       <li><strong>Size:</strong> <%= @costume.size %></li>
-      <li><strong>Price:</strong> $<%= @costume.price %></li>
+      <li><strong>Price:</strong> ¥<%= @costume.price %></li>
+      <li><strong>Genre:</strong> <%= @costume.genre %></li>
     </ul>
   </div>
 
