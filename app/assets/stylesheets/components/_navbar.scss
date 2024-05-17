@@ -4,12 +4,20 @@
   height: 100px;
   margin: 0;
 
+  .title {
+    font-weight:900;
+    font-size: 30px;
+    font-family: "Montserrat Subrayada", sans-serif;
+  font-style: normal;
+  }
+
   h1 {
     font-weight:900;
     font-size: 30px;
     font-family: "Montserrat Subrayada", sans-serif;
   font-style: normal;
   }
+
 }
 
 .navbar-lewagon .navbar-collapse {

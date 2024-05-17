@@ -1,68 +1,30 @@
-<%# <h1>show page</h1> %>
-
 <%= content_for :title, @costume.character %>
-
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <h3>le costume wagon</h3>
-    <%= form_with url: costumes_path, method: :get, local: true, class: "search-bar" do %>
-      <div class="field">
-        <%= text_field_tag :query, params[:query], placeholder: "Search character" %>
-      </div>
-      <%= submit_tag "Search", class: "btn btn-gradient" %>
-    <% end %>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <%= link_to "Home", costumes_path, class: "nav-link" %>
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://img.freepik.com/premium-vector/male-avatar-icon-unknown-or-anonymous-person-default-avatar-profile-icon-social-media-user-business-man-man-profile-silhouette-isolated-on-white-background-vector-illustration_735449-120.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "My booking", bookings_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item"-->
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
-</div>
-
 <div class="costume-details container">
   <div class="d-flex">
     <div class="me-5">
-
-  <div class="costume-photo mt-3">
-    <% if @costume.photo.attached? %>
-      <% @costume.photo.each do |photo| %>
-        <%= image_tag photo, alt: @costume.character, class: 'img-fluid' %>
-      <% end %>
-    <% else %>
-      <%= image_tag 'default_costume.jpg', alt: 'Default Costume photo', class: 'img-fluid' %>
-    <% end %>
+      <div class="costume-photo mt-3">
+        <% if @costume.photo.attached? %>
+          <% @costume.photo.each do |photo| %>
+            <%= image_tag photo, alt: @costume.character, class: 'img-fluid' %>
+          <% end %>
+        <% else %>
+          <%= image_tag 'default_costume.jpg', alt: 'Default Costume photo', class: 'img-fluid' %>
+        <% end %>
+      </div>
+      <h1 class="mt-4"><%= @costume.character %></h1>
+    </div>
+    <div>
+      <div class="costume-description mt-4">
+        <h2>Description</h2>
+        <p><%= @costume.description %></p>
+      </div>
+      <div class="costume-details mt-4">
+        <h2>Details</h2>
+        <ul class="list-unstyled">
+          <li><strong>Size:</strong> <%= @costume.size %></li>
+          <li><strong>Price:</strong> $<%= @costume.price %></li>
+        </ul>
+      </div>
+      <%= render "bookings/form" %>
+    </div>
   </div>
-  <h1 class="mt-4"><%= @costume.character %></h1>
-
-</div>
-<div>
-  <div class="costume-description mt-4">
-    <h2>Description</h2>
-    <p><%= @costume.description %></p>
-  </div>
-
-  <div class="costume-details mt-4">
-    <h2>Details</h2>
-    <ul class="list-unstyled">
-      <li><strong>Size:</strong> <%= @costume.size %></li>
-      <li><strong>Price:</strong> $<%= @costume.price %></li>
-    </ul>
-  </div>
-
-<%= render "bookings/form" %>
-  </div>
-</div>
