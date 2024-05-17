@@ -14,9 +14,14 @@
     <p class="alert"><%= alert %></p>
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
       <div class="container-fluid">
-        <%= link_to root_path, class: "title text-decoration-none text-black" do %>
-          <h1>le costume wagon</h1>
-        <% end %>
+        <div class="d-flex">
+          <%= link_to "#", class: "navbar-brand" do %>
+            <%= image_tag "logo.png" %>
+          <% end %>
+          <%= link_to root_path, class: "title text-decoration-none text-black pt-3 pr-3 pb-3" do %>
+            <h1>le costume wagon</h1>
+          <% end %>
+        </div>
         <%= form_with url: costumes_path, method: :get, local: true, class: "search-bar" do %>
           <div class="search-container"><%= text_field_tag :query, params[:query], placeholder: "Search character", class: "search" %>
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
