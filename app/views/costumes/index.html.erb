@@ -36,7 +36,8 @@
             <div>
               <h2><%= costume.character%></h2>
               <p><%=costume.user.name %></p>
-              <h1 class="price-right"><%= number_to_currency(costume.price, {unit: '¥', precision: 0}) %></h1>
+     
+              <h1 class="price-right"><%= number_to_currency(costume.price, {unit: '¥', precision: 0}) %><span class="smaller-text">/day</span></h1>
             </div>
           </div>
         </div>
