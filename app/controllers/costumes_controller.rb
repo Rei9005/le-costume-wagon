@@ -4,18 +4,20 @@ class CostumesController < ApplicationController
     @costumes = Costume.all
 
     if params[:query].present?
-      @costumes = @costumes.where('character ILIKE ?', "%#{params[:query]}%")
+      @costumes = Costume.where('character ILIKE ?', "%#{params[:query]}%")
     end
 
     if params[:genres].present?
-      @costumes = @costumes.where(genre: params[:genres])
+      @costumes = Costume.where(genre: params[:genres])
+    else
+      @costume = Costume.all
     end
 
     if params[:sort_by].present?
       if params[:sort_by] == 'cost_asc'
-        @costumes = @costumes.order(price: :asc)
+        @costumes = Costume.order(price: :asc)
       elsif params[:sort_by] == 'cost_desc'
-        @costumes = @costumes.order(price: :desc)
+        @costumes = Costume.order(price: :desc)
       end
     end
   end
@@ -39,11 +41,15 @@ class CostumesController < ApplicationController
     end
   end
 
-  private
+  def destroy
+    @costume = Costume.find(params[:id])
+    @costume.destroy
+    redirect_to costumes_path, status: :see_other
+  end
 
   private
 
   def costume_params
-    params.require(:costume).permit(:character, :price, :size, :description, photo: [])
+    params.require(:costume).permit(:character, :genre, :price, :size, :description, photo: [])
   end
 end

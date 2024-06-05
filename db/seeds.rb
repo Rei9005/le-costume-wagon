@@ -7,7 +7,6 @@ User.destroy_all
 
 puts "Creating users and costumes..."
 
-
 # User 1 with 3 costumes
 user = User.new(
   email:  "shiro@junkmail.com",
@@ -207,6 +206,15 @@ user = User.new(
   costume.user = user
   costume.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
   costume.save
+
+# User 4 with 0 costumes
+user = User.new(
+  email:  "rei@junkmail.com",
+  password: "1111111111",
+  name: "Rei",
+  description: "Supervising Fire Marshal",
+  phone: "1111111111")
+user.save
 
 
 puts "Creating bookings..."

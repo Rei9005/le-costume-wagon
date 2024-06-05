@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
 
 
-  resources :costumes, only: [:index, :show, :new, :create] do
+  resources :costumes, only: [:index, :show, :new, :create, :destroy] do
     resources :bookings, only: [:new, :create]
   end
 

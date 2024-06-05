@@ -4,6 +4,7 @@
   height: 100px;
   margin: 0;
 
+
   .title {
     font-weight:900;
     font-size: 30px;
@@ -13,7 +14,7 @@
 
   h1 {
     font-weight:900;
-    font-size: 30px;
+    font-size: 2vw;
     font-family: "Montserrat Subrayada", sans-serif;
   font-style: normal;
   }
@@ -52,7 +53,7 @@ display: inline-block;
   background-color: #DDDDDD;
   border: none;
   border-radius: 5px;
-  width:350px;
+  width:16vw;
   height: 40px;
   padding-left: 30px;
    &:focus {

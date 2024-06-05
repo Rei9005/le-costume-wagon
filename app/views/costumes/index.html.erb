@@ -15,35 +15,36 @@
       </fieldset>
       <div class="dropdown">
         <label>Sort by Price</label><br>
-        <%= select_tag 'sort_by', options_for_select([['Low to High', 'cost_asc'], ['High to Low', 'cost_desc']], params[:sort_by]), onchange: "this.form.submit();", class: "dropdown" %>
+        <%= form_with(url: costumes_path, method: :get, local: true, html: { class: "dropdown-form" }) do |form| %>
+          <%= form.select :sort_by, [['Low to High', 'cost_asc'], ['High to Low', 'cost_desc']], { prompt: 'Select Sort' }, class: "dropdown", onchange: "this.form.submit();" %>
+        <% end %>
       </div>
     <% end %>
   </div>
   <% if @costumes.any? %>
-    <%# <p><%= "#{Costume.count} costumes of #{params[:query]}" %></p>
-  <div class="cards">
-    <% @costumes.each do |costume| %>
-      <%= link_to costume_path(costume), class: 'card-trip-link text-decoration-none text-black' do %>
-        <% if costume.photo.attached? %>
-          <div class="card-trip">
-            <% costume.photo.each do |photo| %>
-              <%= image_tag photo %>
+    <div class="cards">
+      <% @costumes.each do |costume| %>
+        <%= link_to costume_path(costume), class: 'card-trip-link text-decoration-none text-black' do %>
+          <% if costume.photo.attached? %>
+            <div class="card-trip">
+              <% costume.photo.each do |photo| %>
+                <%= image_tag photo %>
+              <% end %>
+            <% else %>
+              No image availables
             <% end %>
-          <% else %>
-            No image availables
-          <% end %>
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= costume.character%></h2>
-              <p><%=costume.user.name %></p>
-              <h1 class="price-right"><%= number_to_currency(costume.price, {unit: '¥', precision: 0}) %><span class="smaller-text">/day</span></h1>
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= costume.character%></h2>
+                <p><%=costume.user.name %></p>
+                <h1 class="price-right"><%= number_to_currency(costume.price, {unit: '¥', precision: 0}) %><span class="smaller-text">/day</span></h1>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
+    <% else %>
+      <p>No costumes found</p>
     <% end %>
-  <% else %>
-    <p>No costumes found</p>
-  <% end %>
-</div>
+  </div>
 </div>
