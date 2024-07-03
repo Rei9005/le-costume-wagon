@@ -57,4 +57,30 @@
       </div>
     <% end %>
   </div>
+  <h1>My postings</h1>
+  <div class="cards-posting d-flex justify-content-start mt-2">
+    <% @costumes.each do |costume| %>
+      <%= link_to costume_path(costume), class: 'card-trip-link text-decoration-none text-black' do %>
+        <% if costume.photo.attached? %>
+          <div class="card-trip " style="margin-right: 10px">
+            <%= link_to costume_path(costume),class: "delete-btn", data: {turbo_method: :delete, turbo_confirm: "Are you sure?" } do%>
+              <i class="fa-solid fa-trash-can fa-lg"></i>
+            <% end %>
+            <% costume.photo.each do |photo| %>
+              <%= image_tag photo %>
+            <% end %>
+          <% else %>
+            No image availables
+          <% end %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= costume.character%></h2>
+              <p><%=costume.user.name %></p>
+              <h1 class="price-right"><%= number_to_currency(costume.price, {unit: '¥', precision: 0}) %><span class="smaller-text">/day</span></h1>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>

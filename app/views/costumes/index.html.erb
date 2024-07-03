@@ -1,46 +1,42 @@
 <%= form_tag costumes_path, method: :get do %>
   <div class="container">
     <div class="dropdown-filter d-flex justify-content-between mb-5">
-      <fieldset data-controller="check-all-checkboxes" class="form-group check_boxes optional snippet_tags">
+      <fieldset  class="form-group check_boxes optional snippet_tags">
         <legend class="col-form-label pt-0">Genres</legend>
         <div class="tag-item">
-          <input data-action="change->check-all-checkboxes#checkAll" id="check-all" type="checkbox" class='form-check-input check_boxes optional tag-selector'>
-          <label for="check-all">All</label>
-        </div>
-        <div class="tag-item">
-          <input data-check-all-checkboxes-target="checkbox" id="check-movies" type="checkbox" class='form-check-input check_boxes optional tag-selector' name="genres[]" value="Movies">
+          <%= check_box_tag "genres[]", "Movies", params[:genres].present? && params[:genres].include?("Movies"), id: 'check-movies', class: 'form-check-input check_boxes optional tag-selector', onchange: "this.form.submit();" %>
           <label for="check-movies">Movies</label>
         </div>
         <div class="tag-item">
-          <input data-check-all-checkboxes-target="checkbox" id="check-scary" type="checkbox" class='form-check-input check_boxes optional tag-selector'>
+          <%= check_box_tag "genres[]", "Scary", params[:genres].present? && params[:genres].include?("Scary"), id: 'check-scary', class: 'form-check-input check_boxes optional tag-selector', onchange: "this.form.submit();" %>
           <label for="check-scary">Scary</label>
         </div>
         <div class="tag-item">
-          <input data-check-all-checkboxes-target="checkbox" id="check-japanese-anime" type="checkbox" class='form-check-input check_boxes optional tag-selector'>
+          <%= check_box_tag "genres[]", "Japanese anime", params[:genres].present? && params[:genres].include?("Japanese anime"), id: 'check-japanese-anime', class: 'form-check-input check_boxes optional tag-selector', onchange: "this.form.submit();" %>
           <label for="check-japanese-anime">Japanese anime</label>
         </div>
         <div class="tag-item">
-          <input data-check-all-checkboxes-target="checkbox" id="check-superhero" type="checkbox" class='form-check-input check_boxes optional tag-selector'>
+          <%= check_box_tag "genres[]", "Superhero", params[:genres].present? && params[:genres].include?("Superhero"), id: 'check-superhero', class: 'form-check-input check_boxes optional tag-selector', onchange: "this.form.submit();" %>
           <label for="check-superhero">Superhero</label>
         </div>
         <div class="tag-item">
-          <input data-check-all-checkboxes-target="checkbox" id="check-pixar" type="checkbox" class='form-check-input check_boxes optional tag-selector'>
+          <%= check_box_tag "genres[]", "Pixar", params[:genres].present? && params[:genres].include?("Pixar"), id: 'check-pixar', class: 'form-check-input check_boxes optional tag-selector', onchange: "this.form.submit();" %>
           <label for="check-pixar">Pixar</label>
         </div>
         <div class="tag-item">
-          <input data-check-all-checkboxes-target="checkbox" id="check-food" type="checkbox" class='form-check-input check_boxes optional tag-selector'>
+          <%= check_box_tag "genres[]", "Food", params[:genres].present? && params[:genres].include?("Food"), id: 'check-food', class: 'form-check-input check_boxes optional tag-selector', onchange: "this.form.submit();" %>
           <label for="check-food">Food</label>
         </div>
         <div class="tag-item">
-          <input data-check-all-checkboxes-target="checkbox" id="check-marvel" type="checkbox" class='form-check-input check_boxes optional tag-selector'>
+          <%= check_box_tag "genres[]", "Marvel", params[:genres].present? && params[:genres].include?("Marvel"), id: 'check-marvel', class: 'form-check-input check_boxes optional tag-selector', onchange: "this.form.submit();" %>
           <label for="check-marvel">Marvel</label>
         </div>
         <div class="tag-item">
-          <input data-check-all-checkboxes-target="checkbox" id="check-pets"type="checkbox" class='form-check-input check_boxes optional tag-selector'>
+          <%= check_box_tag "genres[]", "Pets", params[:genres].present? && params[:genres].include?("Pets"), id: 'check-pets', class: 'form-check-input check_boxes optional tag-selector', onchange: "this.form.submit();" %>
           <label for="check-pets">Pets</label>
         </div>
         <div class="tag-item">
-          <%= check_box_tag "genres[]", "Star Wars", params[:genres].present? && params[:genres].include?("Star Wars"), id: 'check-star-wars', class: 'form-check-input check_boxes optional tag-selector', data: { check_all_checkboxes_target: 'checkbox' }, onchange: "this.form.submit();" %>
+          <%= check_box_tag "genres[]", "Star Wars", params[:genres].present? && params[:genres].include?("Star Wars"), id: 'check-star-wars', class: 'form-check-input check_boxes optional tag-selector', onchange: "this.form.submit();" %>
           <label for="check-star-wars">Star Wars</label>
         </div>
       </fieldset>

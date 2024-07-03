@@ -1,12 +1,13 @@
 // Specific CSS for your home-page
 .home-image {
-  height:100vh;
+  height:100%;
   width:80vw;
   object-fit: cover;
   margin: 0 auto;
   display: block;
+  mix-blend-mode: darken;
 
   &:hover {
-    transform: scale(1.15);
+    transform: scale(1.1);
   }
 }
