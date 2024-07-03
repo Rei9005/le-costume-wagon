@@ -1,0 +1,25 @@
+
+  .form-inputs {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+.form-actions{
+ text-align: center;
+}
+
+.log-in-btn {
+  background-color:#aaa4fc;
+  border: none;
+  padding: 8px 14px;
+  font-size: 17px;
+  font-weight: 510;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  width: 100px;
+  color:white;
+  &:hover{
+    background-color:#8379FF;
+    color:white;
+  }
+}
