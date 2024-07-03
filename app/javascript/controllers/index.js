@@ -9,3 +9,7 @@ eagerLoadControllersFrom("controllers", application)
 // Lazy load controllers as they appear in the DOM (remember not to preload controllers in import map!)
 // import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
 // lazyLoadControllersFrom("controllers", application)
+
+window.Stimulus = Application.start();
+// TODO: Register your Stimulus Controller below
+window.Stimulus.register(`check-all-checkboxes`, CheckAllCheckboxesController);

@@ -1,17 +1,48 @@
 <%= form_tag costumes_path, method: :get do %>
   <div class="container">
     <div class="dropdown-filter d-flex justify-content-between mb-5">
-      <fieldset class="form-group check_boxes optional snippet_tags">
+      <fieldset data-controller="check-all-checkboxes" class="form-group check_boxes optional snippet_tags">
         <legend class="col-form-label pt-0">Genres</legend>
-        <%= hidden_field_tag 'genres[]', nil %>
-        <% genres = [['Movies', 'Movies'], ['Scary', 'Scary'], ['Japanese anime', 'Japanese anime'], ['Superhero', 'Superhero'], ['Pixar', 'Pixar'], ['Food', 'Food'], ['Marvel', 'Marvel'], ['Pets', 'Pets'], ['Star Wars', 'Star Wars']] %>
-        <% genres.each do |genre, param| %>
-          <% id_param = param.downcase.gsub(' ', '_') %>
-          <div class="tag-item">
-            <%= check_box_tag 'genres[]', param, params[:genres].present? && params[:genres].include?(param), class: 'form-check-input check_boxes optional tag-selector', id: "snippet_tag_ids_#{id_param}", onchange: "this.form.submit();" %>
-            <%= label_tag "snippet_tag_ids_#{id_param}", genre, class: 'form-check-label collection_check_boxes' %>
-          </div>
-        <% end %>
+        <div class="tag-item">
+          <input data-action="change->check-all-checkboxes#checkAll" id="check-all" type="checkbox" class='form-check-input check_boxes optional tag-selector'>
+          <label for="check-all">All</label>
+        </div>
+        <div class="tag-item">
+          <input data-check-all-checkboxes-target="checkbox" id="check-movies" type="checkbox" class='form-check-input check_boxes optional tag-selector' name="genres[]" value="Movies">
+          <label for="check-movies">Movies</label>
+        </div>
+        <div class="tag-item">
+          <input data-check-all-checkboxes-target="checkbox" id="check-scary" type="checkbox" class='form-check-input check_boxes optional tag-selector'>
+          <label for="check-scary">Scary</label>
+        </div>
+        <div class="tag-item">
+          <input data-check-all-checkboxes-target="checkbox" id="check-japanese-anime" type="checkbox" class='form-check-input check_boxes optional tag-selector'>
+          <label for="check-japanese-anime">Japanese anime</label>
+        </div>
+        <div class="tag-item">
+          <input data-check-all-checkboxes-target="checkbox" id="check-superhero" type="checkbox" class='form-check-input check_boxes optional tag-selector'>
+          <label for="check-superhero">Superhero</label>
+        </div>
+        <div class="tag-item">
+          <input data-check-all-checkboxes-target="checkbox" id="check-pixar" type="checkbox" class='form-check-input check_boxes optional tag-selector'>
+          <label for="check-pixar">Pixar</label>
+        </div>
+        <div class="tag-item">
+          <input data-check-all-checkboxes-target="checkbox" id="check-food" type="checkbox" class='form-check-input check_boxes optional tag-selector'>
+          <label for="check-food">Food</label>
+        </div>
+        <div class="tag-item">
+          <input data-check-all-checkboxes-target="checkbox" id="check-marvel" type="checkbox" class='form-check-input check_boxes optional tag-selector'>
+          <label for="check-marvel">Marvel</label>
+        </div>
+        <div class="tag-item">
+          <input data-check-all-checkboxes-target="checkbox" id="check-pets"type="checkbox" class='form-check-input check_boxes optional tag-selector'>
+          <label for="check-pets">Pets</label>
+        </div>
+        <div class="tag-item">
+          <%= check_box_tag "genres[]", "Star Wars", params[:genres].present? && params[:genres].include?("Star Wars"), id: 'check-star-wars', class: 'form-check-input check_boxes optional tag-selector', data: { check_all_checkboxes_target: 'checkbox' }, onchange: "this.form.submit();" %>
+          <label for="check-star-wars">Star Wars</label>
+        </div>
       </fieldset>
       <div class="dropdown">
         <label>Sort by Price</label><br>
@@ -21,7 +52,7 @@
       </div>
     <% end %>
   </div>
-  <% if @costumes.any? %>
+  <% if @costumes%>
     <div class="cards">
       <% @costumes.each do |costume| %>
         <%= link_to costume_path(costume), class: 'card-trip-link text-decoration-none text-black' do %>
@@ -45,6 +76,6 @@
       <% end %>
     <% else %>
       <p>No costumes found</p>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

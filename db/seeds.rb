@@ -108,7 +108,7 @@ user = User.new(
   costume.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
   costume.save
 
-  file = URI.open("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFAXK7n7t9iZ61uZQ72eoQnDc24gbun1m9rQ&s")
+  file = URI.open("https://i.pinimg.com/550x/e0/0c/91/e00c9156d84d7ec3a053b8180ad50440.jpg?bcl5xoejg3trk9zf")
   costume = Costume.new(
     price: 3500,
     character: "Son Goku",

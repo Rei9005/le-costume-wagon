@@ -22,4 +22,6 @@ class Costume < ApplicationRecord
       errors.add(:photo, "You can only upload a maximum of 3 photos")
     end
   end
+
+
 end

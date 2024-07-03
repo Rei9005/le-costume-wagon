@@ -4,21 +4,23 @@ class CostumesController < ApplicationController
     @costumes = Costume.all
 
     if params[:query].present?
-      @costumes = Costume.where('character ILIKE ?', "%#{params[:query]}%")
+      @costumes = @costumes.where('character ILIKE ?', "%#{params[:query]}%")
     end
 
-    if params[:genres].present?
-      @costumes = Costume.where(genre: params[:genres])
-    else
-      @costume = Costume.all
-    end
 
     if params[:sort_by].present?
+
       if params[:sort_by] == 'cost_asc'
-        @costumes = Costume.order(price: :asc)
+        @costumes = @costumes.order(price: :asc)
       elsif params[:sort_by] == 'cost_desc'
-        @costumes = Costume.order(price: :desc)
+        @costumes = @costumes.order(price: :desc)
       end
+    end
+
+    if params[:genres].present? && params[:genres].include?("All")
+      @costumes = Costume.all
+    elsif params[:genres].present?
+      @costumes = @costumes.where(genre: params[:genres])
     end
   end
 
