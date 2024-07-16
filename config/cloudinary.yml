@@ -1,0 +1,4 @@
+production:
+  cloud_name: djnshdbgk
+  api_key: CLOUDINARY_URL=cloudinary://725879256752922:DiMhTumhs56YdsbySBa6bagz7sI@djnshdbgk
+  api_secret: DiMhTumhs56YdsbySBa6bagz7sI
