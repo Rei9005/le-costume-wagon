@@ -24,9 +24,18 @@ class CostumesController < ApplicationController
     end
   end
 
+  # def show
+  #   @costume = Costume.find(params[:id])
+  #   @booking = Booking.new
+  # end
+
   def show
-    @costume = Costume.find(params[:id])
-    @booking = Booking.new
+    @costume = Costume.find_by(id: params[:id])
+    if @costume.nil?
+      redirect_to costumes_path, alert: 'コスチュームが見つかりません。'
+    else
+      @booking = Booking.new
+    end
   end
 
   def new

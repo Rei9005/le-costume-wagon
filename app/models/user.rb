@@ -9,10 +9,12 @@ class User < ApplicationRecord
   has_many :bookings_as_owner, through: :costumes, source: :bookings
   # Need the above for the owner to see his/her bookings
 
-  validates :email, presence: true, format: { with: /\A.*@.*\.com\z/ }
-  validates :encrypted_password, presence: true, length: { minimum: 10 }
+  # validates :email, presence: true, format: { with: /\A.*@.*\.com\z/ }
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+
+  validates :encrypted_password, presence: true, length: { minimum: 6 }
 
   validates :name, presence: true
-  validates :description, presence: true, length: { minimum: 5 }
-  validates :phone, presence: true, length: { minimum: 10 }
+  # validates :description, presence: true, length: { minimum: 5 }
+  # validates :phone, presence: true, length: { minimum: 10 }
 end
