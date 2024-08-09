@@ -13,15 +13,30 @@ class BookingsController < ApplicationController
      @booking = Booking.new
   end
 
+  # def create
+  #   @booking = Booking.new(booking_params)
+  #   @booking.user = current_user
+  #   @booking.costume = Costume.find(params[:costume_id])
+  #   @booking.status = 'pending'
+  #   if @booking.save
+  #     flash[:success] = "Booking created successfully!"
+  #     redirect_to bookings_path
+  #   else
+  #     render 'costumes/show'
+  #   end
+  # end
+
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.costume = Costume.find(params[:costume_id])
     @booking.status = 'pending'
+
     if @booking.save
       flash[:success] = "Booking created successfully!"
       redirect_to bookings_path
     else
+      @costume = @booking.costume # ここで @costume を設定
       render 'costumes/show'
     end
   end
